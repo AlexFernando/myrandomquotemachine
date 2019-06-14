@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-
 import Quote from './componentes/Quote';
-
-import quotesFile from './data/quotes.json'
-
 import {random} from 'lodash';
+import axios from 'axios';
+
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 
 class App extends Component {
@@ -23,10 +23,17 @@ class App extends Component {
   }
 
   
-  componentDidMount() {    
-    this.setState({
-        quotes: quotesFile
-      }) 
+  componentDidMount() {
+    
+    axios.get('https://gist.githubusercontent.com/natebass/b0a548425a73bdf8ea5c618149fe1fce/raw/f4231cd5961f026264bb6bb3a6c41671b044f1f4/quotes.json')
+    .then(response => {
+      this.setState({
+        quotes: response.data
+      })  
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
 
@@ -39,11 +46,11 @@ class App extends Component {
 
   myRandomFoo = () => {
     let randomNumber = random(0, this.state.quotes.length -1); 
-    const {quoteText, quoteAuthor} = this.state.quotes[randomNumber];
+    const {author, quote} = this.state.quotes[randomNumber];
 
     this.setState({
-      quoteText, 
-      quoteAuthor
+      quoteText : quote,
+      quoteAuthor: author
     })
     this.changeBackground();
   }
@@ -59,6 +66,13 @@ class App extends Component {
           quoteAuthor = {this.state.quoteAuthor}
         />
 
+      <div id='buttons'>
+          <a id='tweet-quote' href={`https://twitter.com/intent/tweet?text=${this.state.quoteText} ${this.state.quoteAuthor}`} target='_blank' title="Post this quote on twitter!">
+              <FontAwesomeIcon icon={faTwitter} > </FontAwesomeIcon>
+          </a>
+      </div>
+      <br></br>
+      <br></br>
      
        <button onClick={this.myRandomFoo}>
               New Quote
