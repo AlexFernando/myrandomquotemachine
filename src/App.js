@@ -2,9 +2,12 @@ import React, {Component} from 'react';
 import Quote from './componentes/Quote';
 import {random} from 'lodash';
 import axios from 'axios';
-
+import './App.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+
+
+
 
 
 class App extends Component {
@@ -50,7 +53,7 @@ class App extends Component {
 
     this.setState({
       quoteText : quote,
-      quoteAuthor: author
+      quoteAuthor: author 
     })
     this.changeBackground();
   }
@@ -60,26 +63,24 @@ class App extends Component {
   render() {
     
     return (
-      <div className="contenedor">
+     
+      <div className="card">
         <Quote
           quoteText = {this.state.quoteText}
           quoteAuthor = {this.state.quoteAuthor}
         />
 
-      <div id='buttons'>
-          <a id='tweet-quote' href={`https://twitter.com/intent/tweet?text=${this.state.quoteText} ${this.state.quoteAuthor}`} target='_blank' title="Post this quote on twitter!">
-              <FontAwesomeIcon icon={faTwitter} > </FontAwesomeIcon>
-          </a>
-      </div>
-      <br></br>
-      <br></br>
+        <div className="buttons">
+            <a className="button twitter" href={`https://twitter.com/intent/tweet?text=${this.state.quoteText} ${this.state.quoteAuthor}`} target='_blank' title="Post this quote on twitter!">
+              <FontAwesomeIcon className="fa-twit" icon={faTwitter} > </FontAwesomeIcon>
+            </a>
      
-       <button onClick={this.myRandomFoo}>
-              New Quote
-        </button>
-
-
-      </div>  
+            <button className="button" onClick={this.myRandomFoo}>
+                New Quote
+            </button>
+        </div>
+      </div>
+        
     );
   }
 }
