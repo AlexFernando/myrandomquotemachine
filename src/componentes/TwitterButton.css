@@ -1,0 +1,24 @@
+.button {
+    height: 38px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #333;
+    outline: none;
+    font-size: 0.85em;
+    padding: 8px 18px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.twitter {
+    height: 30px;
+    margin-top: 25px;
+}
+
+
+.fa-twit {
+    font-size: 1.3rem;
+    justify-content: center;
+    margin-top: 5px;
+}
