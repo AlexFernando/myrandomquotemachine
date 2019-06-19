@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import Quote from './componentes/Quote';
+import Button from './componentes/Button';
 import {random} from 'lodash';
 import axios from 'axios';
 import './App.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import { faTwitter } from '@fortawesome/free-brands-svg-icons';
-
+import TwitterButton from './componentes/TwitterButton';
 
 class App extends Component {
 
@@ -44,19 +43,27 @@ class App extends Component {
     });
   }
 
-  myRandomFoo = () => {
-    let randomNumber = random(0, this.state.quotes.length -1); 
-    const {author, quote} = this.state.quotes[randomNumber];
+  myRandomColor = () => {
     const {colors} = this.state;
     const color = colors[random(0, colors.length - 1)];
 
     this.setState({
-      quoteText : quote,
-      quoteAuthor: author,
       color
     })
 
     document.body.style.backgroundColor = color;  
+  }
+
+  myRandomFoo = () => {
+    let randomNumber = random(0, this.state.quotes.length -1); 
+    const {author, quote} = this.state.quotes[randomNumber];
+    
+    this.setState({
+      quoteText : quote,
+      quoteAuthor: author
+    })
+
+    this.myRandomColor();
   }
 
 
@@ -73,13 +80,9 @@ class App extends Component {
         />
 
         <div className="buttons">
-            <a style={{backgroundColor: this.state.color}} className="button twitter" href={`https://twitter.com/intent/tweet?text=${this.state.quoteText} ${this.state.quoteAuthor}`} target='_blank' title="Post this quote on twitter!">
-              <FontAwesomeIcon className="fa-twit" icon={faTwitter} > </FontAwesomeIcon>
-            </a>
-     
-            <button style={{backgroundColor: this.state.color}} className="button"  onClick={this.myRandomFoo}>
-                New Quote
-            </button>
+            <TwitterButton color={this.state.color} quoteText={this.state.quoteText} quoteAuthor = {this.state.quoteAuthor} target='_blank' title="Post this quote on twitter!"/>
+
+            <Button color = {this.state.color}  onClick={this.myRandomFoo} title='New Quote'/>
         </div>
       </div>
         
