@@ -9,7 +9,7 @@ const Quote = (props) => {
     if(!props.quoteAuthor) {
         return(
         <React.Fragment>
-          <div className="quote-text">
+          <div style={{color: props.color}} className="quote-text">
             <FontAwesomeIcon className="quote-left" icon={ faQuoteLeft } />
             <span className="text">{props.quoteText}</span>
             <p><i>Anonymous</i></p>
@@ -21,12 +21,12 @@ const Quote = (props) => {
 
   return(
     <div>
-       <div className="quote-text">
+       <div style={{color: props.color}} className="quote-text">
             <FontAwesomeIcon className="quote-left" icon={ faQuoteLeft } />
             <span className="text">{props.quoteText}</span>   
         </div>
 
-        <div className="quote-author">
+        <div style={{color: props.color}} className="quote-author">
           <span><i>~{props.quoteAuthor}</i></span>
         </div>
     </div>
