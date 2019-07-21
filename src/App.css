@@ -4,11 +4,25 @@
     width: 450px;
     padding: 40px 50px;
     background-color: #fff;
+    overflow-x:hidden;
+    width:100%;
 }
 
 .buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
+@media(max-width: 415px){
+    .buttons{
+        width: 300px;
+    }
+}
 
+.developer {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: .8rem;
+    font-weight: 500;
+    color: white;
+}
