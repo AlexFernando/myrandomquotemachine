@@ -1,12 +1,30 @@
+.title {
+    color: rgb(250, 249, 249);
+    text-align: center;
+    margin-bottom: 5rem;
+    margin-top: 10rem;
+    text-shadow: 1px 2px 10px rgb(66, 66, 66);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    font-family: 'Delius', cursive;
+    text-justify: auto;
+}
+
+@media(min-width: 768px) {
+    .title {
+        font-size: 1.5rem;
+        margin-top: 0;
+    }
+}
+
 .card {
-    border-radius: 3px;
+    border-radius: 5px;
     position: relative;
-    width: 450px;
     padding: 40px 50px;
     background-color: #fff;
     overflow-x:hidden;
-    width:100%;
-}
+    border: outset rgb(180, 175, 175);
+}   
 
 .buttons {
     display: flex;
@@ -23,6 +41,10 @@
     text-align: center;
     margin-top: 2rem;
     font-size: .8rem;
-    font-weight: 500;
+    font-weight: bold;
     color: white;
+    font-family: 'Delius', cursive;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
 }
+
